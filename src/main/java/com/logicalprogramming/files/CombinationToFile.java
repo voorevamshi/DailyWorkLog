@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CombinationToFile {
     public static void main(String[] args) {
-        String[] numbers = {"1014", "1015", "1016", "1017", "1018", "1019", "1020", "1021", "1022", "1023", "1024", "1025"};
+        String[] numbers = {"819","820","821","822","823","824","825","826","827","828","829","830"};
         String outputFile = "combinations.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
@@ -24,8 +24,8 @@ public class CombinationToFile {
 
     private static void generateCombinations(String[] numbers, int length, int start, List<String> current, BufferedWriter writer) throws IOException {
         if (current.size() == length) {
-            writer.write("insert into [ATF].[FormSurveyQuestionAnswerOptionCombo] (assgnFormSurveyQuestion,assgnFormSurveyAnswerCombo,comboOutcomeValue,comboNextQuestionCode,activeInd)\r\n"
-            		+ "        values (418,'"+String.join(",", current)+"','MET','STOP','Y');");
+            writer.write("insert into [ATF].[FormSurveyQuestionAnswerOptionCombo] (assgnFormSurveyQuestion,assgnFormSurveyAnswerCombo,comboOutcomeValue,comboNextQuestionCode,activeInd) "
+            		+ " values (@assgnFormSurveyQuestion,'"+String.join(",", current)+"','MET','STOP','Y');");
             writer.newLine();
             return;
         }
